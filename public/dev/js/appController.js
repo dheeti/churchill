@@ -48,7 +48,8 @@ app.controller("main-controller", [ '$http', '$location', '$cookies', 'accessFac
                 username: self.new_user,
                 password: self.new_pass,
                 name:     self.name,
-                city:     self.city
+                city:     self.city,
+                is_admin: true
             });
             dataFac.put(endpointFac.url_post_user(), user_arg).then(function(data){utilsFac.echo(data);});
         };
