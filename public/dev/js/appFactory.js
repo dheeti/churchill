@@ -40,7 +40,7 @@ app.factory('utilsFac', function(){
 });
 
 app.factory('endpointFac', ['$cookies', function($cookies) {
-    var urlBase = 'http://54.186.164.63:9000/';
+    var urlBase = 'http://54.187.140.224:9000/';
     return {
         url_get_issues: function(filterId) {
             return urlBase + 'api/community/issue' + '?filter_id=' + filterId;
