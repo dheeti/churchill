@@ -88,7 +88,7 @@ app.factory('dataFac',['$http', '$q', function($http, $q) {
             return $q.all(promises);
         };
 
-        dataFactory.put = function(url, data) {
+/*        dataFactory.put = function(url, data) {
             var dfrd = $q.defer();
             $http.post(url, data)
                 .success(function(response) {
@@ -99,16 +99,29 @@ app.factory('dataFac',['$http', '$q', function($http, $q) {
                 });
             return dfrd.promise;
         };
+*/
+dataFactory.put = function(url, data) {
+       var dfrd = $q.defer();
+       $http.post(url, data)
+           .then(function(response) {
+               dfrd.resolve(response);
+           })
+           .catch(function(error) {
+               dfrd.reject(error);
+           });
+       return dfrd.promise;
+    };
+
 
         dataFactory.fetch = function(url) {
             var dfrd = $q.defer();
             $http.get(url)
-                .success(function(data) {
-                    dfrd.resolve(data);
-                })
-                .error(function(error) {
-                    dfrd.reject(error);
-                });
+           .then(function(response) {
+               dfrd.resolve(response);
+           })
+           .catch(function(error) {
+               dfrd.reject(error);
+           });
             return dfrd.promise;
         };
 
